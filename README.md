@@ -1,1 +1,11 @@
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-c66648af7eb3fe8bc4f294546bfd86ef473780cde1dea487d3c4ff354943c9ae.svg)](https://classroom.github.com/online_ide?assignment_repo_id=10014358&assignment_repo_type=AssignmentRepo)
+Sujet Site de musique
+
+Site avec utilisateur pas co, utilisateur, artiste, admin, modo.
+
+Artiste peut : ajouter album, ajouter titres dans album, ajouter annecdote sur le titre (ex spotify)
+
+Utili pas co peut regarder les trucs sans rien faire
+
+Utili co peut commenter / noter les sons
+
+Admin comme les jeux. 
