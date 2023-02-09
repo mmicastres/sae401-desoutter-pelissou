@@ -2,7 +2,7 @@ Sujet Site de musique
 
 Site avec utilisateur pas co, utilisateur, artiste, admin, modo.
 
-Artiste peut : ajouter album, ajouter titres dans album, ajouter annecdote sur le titre (ex spotify)
+Artiste peut : ajouter album, ajouter titres dans album, ajouter anecdote sur le titre (ex spotify)
 
 Utili pas co peut regarder les trucs sans rien faire
 
