@@ -48,3 +48,5 @@ Route::get('albums', [App\Http\Controllers\AlbumsController::class, 'getAlbumsVa
 Route::get('utilisateurs/{pseudo}', [App\Http\Controllers\UtilisateursController::class, 'getSpeUtili']);
 Route::get('utilisateurs', [App\Http\Controllers\UtilisateursController::class, 'getUtilisateursBan']);
 Route::post('artistes/{pseudo}/albums/{id_album}/titres', [App\Http\Controllers\TitresController::class, 'ajoutTitres']);
+Route::post('categories', [App\Http\Controllers\CategoriesController::class, 'ajoutCategories']);
+Route::post('artiste/{pseudo}/titres/{id_titre}/anecdotes', [App\Http\Controllers\AnecdotesController::class, 'ajoutAnecdotes']);
