@@ -36,3 +36,15 @@ Route::get('anecdote?valide=0', [App\Http\Controllers\AnecdotesController::class
 
 // Categories
 Route::get('categories', [App\Http\Controllers\CategoriesController::class, 'listeCategories']);
+
+
+// A trier
+
+Route::get('/albums', [App\Http\Controllers\AlbumsController::class, 'listeAccueil']);
+Route::get('/albums/{id_album}', [App\Http\Controllers\AlbumsController::class, 'albumSpe']);
+Route::get('/categories/{nom_categorie}/albums', [App\Http\Controllers\CategoriesController::class, 'listeAlbumsCat']);
+Route::get('artistes/{pseudo}/albums', [App\Http\Controllers\ArtistesController::class, 'listeAlbumsArtistes']);
+Route::get('albums', [App\Http\Controllers\AlbumsController::class, 'getAlbumsValides']);
+Route::get('utilisateurs/{pseudo}', [App\Http\Controllers\UtilisateursController::class, 'getSpeUtili']);
+Route::get('utilisateurs', [App\Http\Controllers\UtilisateursController::class, 'getUtilisateursBan']);
+Route::post('artistes/{pseudo}/albums/{id_album}/titres', [App\Http\Controllers\TitresController::class, 'ajoutTitres']);

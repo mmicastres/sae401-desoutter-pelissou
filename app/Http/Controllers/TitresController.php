@@ -26,4 +26,33 @@ class TitresController extends Controller
         $titres = Titres::where("pseudo", "=", $pseudo)->get();
         return response()->json($titres);
     }
+
+    public function ajoutTitres(Request $request, $pseudo,$id_album){
+        // $request->all();
+        // $validator = Validator::make($request->all(), [
+        //     // 'id' => ['required','numeric'],
+        //     'nom' => ['required','alpha'],
+        //     'qte' => ['required','integer']
+        //     ]);
+    
+        //     if ($validator->fails()) {
+        //         return $validator->errors();
+        //     }
+        
+        $titres = new Titres;
+        $titres->titre = $request->titre;
+        $titres->pochette = $request->pochette;
+        $titres->paroles = $request->paroles;
+        $titres->lien = $request->lien;
+        $titres->pseudo = $pseudo;
+        $titres->id_album = $id_album;
+        $ok = $titres->save();
+        if ($ok) {
+            return response()->json(["status" => 1, "message" => "Album ajouté"],201);
+        } 
+        else {
+            return response()->json(["status" => 0, "message" => "pb lors de
+    l'ajout"],400);
+        }
+}
 }

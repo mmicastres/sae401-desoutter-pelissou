@@ -11,10 +11,26 @@ class AlbumsController extends Controller
         $Albums = Albums::get();
         return response()->json($Albums);
     }
-}
+
+    public function listeAccueil(){
+        $Albums = Albums::orderBy('date_ajout', 'desc')->limit(3)->get();
+        return response()->json($Albums);
+    }
+
+    public function albumSpe($id){
+        $Albums = Albums::where("id_album","=",$id)->get();
+        return response()->json($Albums);
+    }
+    public function getAlbumsValides(Request $request){
+        if($request->has('valide')){
+            $albums = Albums::where("valide", "=", $request->valide)->get();
+            return response()->json($albums);
+        }
+    }
+
     public function ajoutAlbums(Request $request){
-    // $request->all();
-    // $validator = Validator::make($request->all(), [
+        // $request->all();
+        // $validator = Validator::make($request->all(), [
     //     // 'id' => ['required','numeric'],
     //     'nom' => ['required','alpha'],
     //     'qte' => ['required','integer']
@@ -36,5 +52,7 @@ class AlbumsController extends Controller
         return response()->json(["status" => 0, "message" => "pb lors de
 l'ajout"],400);
     }
+
+}
 
 }
