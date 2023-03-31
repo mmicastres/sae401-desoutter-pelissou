@@ -22,6 +22,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/albums', [App\Http\Controllers\AlbumsController::class, 'listeAlbums']);
 Route::get('/titres', [App\Http\Controllers\TitresController::class, 'listetitres']);
 
-Route::get('albums/titres/{id_titre}', [App\Http\Controllers\TitresController::class, 'listeTitresAlbums']);
+Route::get('albums/{id_album}/titres', [App\Http\Controllers\TitresController::class, 'listeTitresAlbums']);
 
-Route::get('artiste/{idartiste}/titres', [App\Http\Controllers\TitresController::class, 'listeTitresArtistes']);
+Route::get('artistes/{pseudo}/titres', [App\Http\Controllers\TitresController::class, 'listeTitresArtistes']);
+
+Route::get('titre/{id_titre}/anecdotes', [App\Http\Controllers\AnecdotesController::class, 'getAnecdoteTitre']);
+
+Route::get('anecdote?valide=0', [App\Http\Controllers\AnecdotesController::class, 'getAnecdotesValides']);
+
+Route::get('categories', [App\Http\Controllers\CategoriesController::class, 'listeCategories']);

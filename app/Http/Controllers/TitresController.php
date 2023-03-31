@@ -21,9 +21,9 @@ class TitresController extends Controller
         $titres = Titres::where("id_album", "=", $id_album)->get();
         return response()->json($titres);
     }
-    public function listeTitresArtistes($id_artiste)
+    public function listeTitresArtistes($pseudo)
     {
-        $titres = Titres::where("id_artiste", "=", $id_artiste)->get();
+        $titres = Titres::where("pseudo", "=", $pseudo)->get();
         return response()->json($titres);
     }
 }
