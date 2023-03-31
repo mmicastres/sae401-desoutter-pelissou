@@ -36,7 +36,8 @@ Route::get('anecdote?valide=0', [App\Http\Controllers\AnecdotesController::class
 
 // Categories
 Route::get('categories', [App\Http\Controllers\CategoriesController::class, 'listeCategories']);
-
+Route::post('categories', [App\Http\Controllers\CategoriesController::class,'ajoutCategories']);
+Route::post('artiste/{pseudo}/titres/{id_titres/anecdotes', [App\Http\Controllers\AnecdotesController::class, 'ajoutAnecdote'])
 
 // A trier
 
