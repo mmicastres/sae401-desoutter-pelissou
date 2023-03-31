@@ -18,5 +18,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+// List of all the API routes
 Route::get('/albums', [App\Http\Controllers\AlbumsController::class, 'listeAlbums']);
 Route::get('/titres', [App\Http\Controllers\TitresController::class, 'listetitres']);
