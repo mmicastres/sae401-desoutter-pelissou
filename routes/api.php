@@ -39,7 +39,7 @@ Route::post('/artistes/{pseudo}/albums/{id_album}/titres', [App\Http\Controllers
 // Anecdotes
 Route::get('/titre/{id_titre}/anecdotes', [App\Http\Controllers\AnecdotesController::class, 'getAnecdoteTitre']);
 Route::get('/anecdote?valide=0', [App\Http\Controllers\AnecdotesController::class, 'getAnecdotesValides']);
-Route::post('/artiste/{pseudo}/titres/{id_titre}/anecdotes', [App\Http\Controllers\AnecdotesController::class, 'ajoutAnecdotes']);
+// Route::post('/artiste/{pseudo}/titres/{id_titre}/anecdotes', [App\Http\Controllers\AnecdotesController::class, 'ajoutAnecdotes']);
 Route::put('/admins/anecdote?valide=0/{idanecdote}', [App\Http\Controllers\UtilisateursController::class, 'changeUtili']);
 
 // Categories
