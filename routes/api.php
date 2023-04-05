@@ -26,7 +26,7 @@ Route::get('/albums', [App\Http\Controllers\AlbumsController::class, 'listeAlbum
 Route::post('/albums', [App\Http\Controllers\AlbumsController::class, 'ajoutAlbums']);
 Route::get('/albums', [App\Http\Controllers\AlbumsController::class, 'listeAccueil']);
 Route::get('/albums/{id_album}', [App\Http\Controllers\AlbumsController::class, 'albumSpe']);
-Route::get('/categories/{nom_categorie}/albums', [App\Http\Controllers\CategoriesController::class, 'listeAlbumsCat']);
+Route::get('/categories/{nom_categorie}/albums', [App\Http\Controllers\AlbumsController::class, 'listeAlbumsCat']);
 Route::get('artistes/{pseudo}/albums', [App\Http\Controllers\ArtistesController::class, 'listeAlbumsArtistes']);
 Route::get('albums', [App\Http\Controllers\AlbumsController::class, 'getAlbumsValides']);
 
@@ -52,6 +52,7 @@ Route::post('/artiste/{pseudo}/titres/{id_titres/anecdotes', [App\Http\Controlle
 Route::get('/utilisateurs/{pseudo}', [App\Http\Controllers\UtilisateursController::class, 'getSpeUtili']);
 Route::get('/utilisateurs', [App\Http\Controllers\UtilisateursController::class, 'getUtilisateursBan']);
 Route::put('/utilisateurs', [App\Http\Controllers\UtilisateursController::class, 'changeUtili']);
+Route::post('/utilisateurs', [App\Http\Controllers\UtilisateursController::class,'ajoutUtili']);
 
 // A trier
 

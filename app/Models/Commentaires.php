@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Commentaires extends Model
 {
     use HasFactory;
+    public $timestamps = FALSE;
+    public $incrementing = False;
 }

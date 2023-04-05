@@ -14,7 +14,7 @@ class CategoriesController extends Controller
 
     public function listeCategories()
     {
-        $categories = Titres::get();
+        $categories = Categories::get();
         return response()->json($categories);
     }
     public function ajoutCategories()

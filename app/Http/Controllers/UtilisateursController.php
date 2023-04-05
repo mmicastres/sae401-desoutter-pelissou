@@ -49,4 +49,19 @@ class UtilisateursController extends Controller
             }
     } 
 }
+public function ajoutUtili(Request $request)
+    {
+        $utilisateur = new Utilisateurs;
+        $utilisateur->pseudo = $request->pseudo;
+        $utilisateur->mail = $request->mail;
+        $utilisateur->mdp = $request->mdp;
+        $ok = $utilisateur->save();
+        if ($ok) {
+            return response()->json(["status" => 1, "message" => "Utilisateur ajoutée"],201);
+        } 
+        else {
+            return response()->json(["status" => 0, "message" => "pb lors de
+    l'ajout"],400);
+        }
+    }
 }
