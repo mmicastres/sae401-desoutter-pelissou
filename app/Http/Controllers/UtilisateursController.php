@@ -4,13 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Utilisateurs;
-
-class UtilisateursController extends Controller
-{
-    class UtilisateursController extends Controller
-{
+    
+class UtilisateursController extends Controller {
     public function getSpeUtili($pseudo){
-        $Utilisateur = Utilisateurs::where("pseudo","=",$pseudo)->get();
+        $Utilisateur = Utilisateurs::where("pseudo","=",$pseudo)->get()->first();
         return response()->json($Utilisateur);
     }
     public function getUtilisateursBan(Request $request)
@@ -33,7 +30,7 @@ class UtilisateursController extends Controller
         //         return $validator->errors();
         //     }
 
-        if($utilisateur = Utilisateur::find($request->id)){
+        if($utilisateur = Utilisateurs::find($request->id)){
             $utilisateur->mdp = $request->mdp;
             $utilisateur->pp = $request->pp;
             $ok = $utilisateur->save();
@@ -47,9 +44,9 @@ class UtilisateursController extends Controller
         else{
             return response()->json(["status" => 0, "message" => "Prbl modif"],400);
             }
-    } 
-}
-public function ajoutUtili(Request $request)
+    }
+
+    public function ajoutUtili(Request $request)
     {
         $utilisateur = new Utilisateurs;
         $utilisateur->pseudo = $request->pseudo;
@@ -57,11 +54,22 @@ public function ajoutUtili(Request $request)
         $utilisateur->mdp = $request->mdp;
         $ok = $utilisateur->save();
         if ($ok) {
-            return response()->json(["status" => 1, "message" => "Utilisateur ajoutée"],201);
+            return response()->json(["status" => 1, "message" => "Catégorie ajoutée"],201);
         } 
         else {
             return response()->json(["status" => 0, "message" => "pb lors de
     l'ajout"],400);
         }
     }
+
+    public function recupUtili(Request $request)
+    {
+        $utilisateur->pseudo = $request->pseudo;
+        $utilisateur->mdp = $request->mdp;
+
+        $utilisateur = Utilisateurs::where("pseudo","=",$pseudo);
+        $utilisateur = Utilisateurs::where("mdp","=",$mdp);
+        return response()->json($utilisateur);
+    }
 }
+

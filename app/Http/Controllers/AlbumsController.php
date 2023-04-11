@@ -7,25 +7,32 @@ use Illuminate\Http\Request;
 
 class AlbumsController extends Controller
 {
-    public function listeAlbums(){
-        $Albums = Albums::get();
-        return response()->json($Albums);
+
+    public function listeAlbumsCat($nom_categorie){
+        $listeAlbumscat = Albums::where("nom_categorie","=",$nom_categorie)->get();
+        return response()->json($listeAlbumscat); 
     }
+
+    // public function listeAlbums(){
+    //     $Albums = Albums::get();
+    //     return response()->json($Albums);
+    // }
 
     public function listeAccueil(){
         $Albums = Albums::orderBy('date_ajout', 'desc')->limit(3)->get();
+        $Albums = Albums::where("valide", "=", 1)->get();
         return response()->json($Albums);
     }
 
     public function albumSpe($id){
-        $Albums = Albums::where("id_album","=",$id)->get();
+        $Albums = Albums::where("id_album","=",$id)->get()->first();
         return response()->json($Albums);
     }
-    public function getAlbumsValides(Request $request){
-        if($request->has('valide')){
-            $albums = Albums::where("valide", "=", $request->valide)->get();
+    public function getAlbumsNonValides(){
+        
+            $albums = Albums::where("valide", "=", 0)->get();
             return response()->json($albums);
-        }
+        
     }
 
     public function ajoutAlbums(Request $request){

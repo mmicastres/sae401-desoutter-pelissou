@@ -27,6 +27,17 @@ class TitresController extends Controller
         return response()->json($titres);
     }
 
+    public function getTitreSpe($id_titre){
+        $titrespe = Titres::where("id_titre","=",$id_titre)->get()->first();
+        return response()->json($titrespe);
+    }
+
+    public function getTitreSpeAlb($id_album,$id_titre){
+        $titrespealb = Titres::where("id_album","=",$id_album)->get()->first();
+        $titrespealb = Titres::where("id_titre","=",$id_titre)->get()->first();
+        return response()->json($titrespealb);
+    }
+
     public function ajoutTitres(Request $request, $pseudo,$id_album){
         // $request->all();
         // $validator = Validator::make($request->all(), [
