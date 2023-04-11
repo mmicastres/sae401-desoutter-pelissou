@@ -18,7 +18,7 @@ class UtilisateursController extends Controller {
         }
     }
 
-    public function changeUtili(Request $request){
+    public function changeUtili(Request $request, $pseudo){
         // $request->all();
         // $validator =  Validator::make($request->all(), [
         //     'id' => ['required','integer'],
@@ -30,7 +30,7 @@ class UtilisateursController extends Controller {
         //         return $validator->errors();
         //     }
 
-        if($utilisateur = Utilisateurs::find($request->id)){
+        if($utilisateur = Utilisateurs::where("pseudo","=",$pseudo)->first()){
             $utilisateur->mdp = $request->mdp;
             $utilisateur->pp = $request->pp;
             $ok = $utilisateur->save();
@@ -64,11 +64,7 @@ class UtilisateursController extends Controller {
 
     public function recupUtili(Request $request)
     {
-        $utilisateur->pseudo = $request->pseudo;
-        $utilisateur->mdp = $request->mdp;
-
-        $utilisateur = Utilisateurs::where("pseudo","=",$pseudo);
-        $utilisateur = Utilisateurs::where("mdp","=",$mdp);
+        $utilisateur = Utilisateurs::where("pseudo","=",$request->pseudo)->where("mdp","=",$request->mdp)->get();
         return response()->json($utilisateur);
     }
 }

@@ -12,7 +12,7 @@ class CategoriesController extends Controller
         $categories = Categories::get();
         return response()->json($categories);
     }
-    public function ajoutCategories()
+    public function ajoutCategories(Request $request)
     {
         $categorie = new Categories;
         $categorie->nom_categorie = $request->nom_categorie;
@@ -24,5 +24,10 @@ class CategoriesController extends Controller
             return response()->json(["status" => 0, "message" => "pb lors de
     l'ajout"],400);
         }
+    }
+
+    public function deleteCategories($nom_categorie){
+        $categorie = Categories::where("nom_categorie","LIKE",$nom_categorie);
+        $categorie->delete();
     }
 }

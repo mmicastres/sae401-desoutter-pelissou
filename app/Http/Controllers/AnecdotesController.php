@@ -35,4 +35,22 @@ class AnecdotesController extends Controller
     l'ajout"],400);
         }
     }
+
+    public function valideAnecdote(Request $request, $id_anec){
+        
+
+        if($anecdote = Anecdotes::where("id_anec","=",$id_anec)->first()){
+            $anecdote->valide = $request->valide;
+            $ok = $anecdote->save();
+            return response()->json($anecdote);
+            if ($ok) {
+                return response()->json(["status" => 1, "message" => "Profil modifié"], 204);
+            } else {
+                return response()->json(["status" => 0, "message" => "Pb modif"],400);
+            }
+        }
+        else{
+            return response()->json(["status" => 0, "message" => "Prbl modif"],400);
+            }
+    }
 }

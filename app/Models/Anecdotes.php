@@ -10,4 +10,9 @@ class Anecdotes extends Model
     use HasFactory;
     public $timestamps = FALSE;
     public $incrementing = False;
+
+    protected $primaryKey = 'id_anec';
+
+    protected $keyType = 'int';
+
 }
