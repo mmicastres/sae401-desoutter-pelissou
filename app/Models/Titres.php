@@ -10,4 +10,8 @@ class Titres extends Model
     use HasFactory;
     public $timestamps = FALSE;
     public $incrementing = False;
+
+    protected $primaryKey = 'id_titre';
+
+    protected $keyType = 'int';
 }

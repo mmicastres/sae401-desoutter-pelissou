@@ -41,7 +41,6 @@ Route::post('/artistes/{pseudo}/albums/{id_album}/titres', [App\Http\Controllers
 Route::get('/titre/{id_titre}/anecdotes', [App\Http\Controllers\AnecdotesController::class, 'getAnecdoteTitre']);
 Route::get('/anecdote', [App\Http\Controllers\AnecdotesController::class, 'getAnecdotesValides']);
 Route::post('/artiste/{pseudo}/titres/{id_titres/anecdotes', [App\Http\Controllers\AnecdotesController::class, 'ajoutAnecdote']);
-Route::put('/admins/anecdote?valide=0/{idanecdote}', [App\Http\Controllers\UtilisateursController::class, 'changeUtili']);
 // Route::post('/artiste/{pseudo}/titres/{id_titre}/anecdotes', [App\Http\Controllers\AnecdotesController::class, 'ajoutAnecdotes']);
 
 // Categories
@@ -54,7 +53,6 @@ Route::get('/utilisateurs/{pseudo}', [App\Http\Controllers\UtilisateursControlle
 Route::get('/utilisateurs', [App\Http\Controllers\UtilisateursController::class, 'getUtilisateursBan']);
 Route::post('/utilisateurs', [App\Http\Controllers\UtilisateursController::class, 'ajoutUtili']);
 Route::post('/connexion', [App\Http\Controllers\UtilisateursController::class, 'recupUtili']);
-Route::put('/utilisateurs/{pseudo}', [App\Http\Controllers\UtilisateursController::class, 'changeUtili']);
 
 // Commentaires
 
@@ -70,6 +68,24 @@ Route::get('/recherche', [App\Http\Controllers\RecherchesController::class, 'get
 
 // Admin
 
-Route::get('/admin/albums', [App\Http\Controllers\AlbumsController::class, 'getAlbumsNonValides'],);
-Route::delete('/admin/categories/{nom_categorie}', [App\Http\Controllers\CategoriesController::class, 'deleteCategories']);
-Route::put('admin/anecdote', [App\Http\Controllers\AnecdotesController::class, 'valideAnecdote']);
+Route::get('/admins/albums', [App\Http\Controllers\AlbumsController::class, 'getAlbumsNonValides'],);
+Route::delete('/admins/categories/{nom_categorie}', [App\Http\Controllers\CategoriesController::class, 'deleteCategories']);
+Route::put('/utilisateurs/{pseudo}', [App\Http\Controllers\UtilisateursController::class, 'changeUtili']);
+
+// Route permitting the artists to modify their anecdote / Title and Album
+Route::put('/anecdotes/{id_anec}/modifier', [App\Http\Controllers\AnecdotesController::class, 'changeAnec']);
+Route::put('/titres/{id_titre}/modifier', [App\Http\Controllers\TitresController::class, 'changeTitre']);
+Route::put('/album/{id_album}/modifier', [App\Http\Controllers\AlbumsController::class, 'changeAlbum']);
+
+// Route for the Admin to validate
+Route::put('admins/anecdote/{id_anec}', [App\Http\Controllers\AnecdotesController::class, 'valideAnecdote']);
+Route::put('admins/titres/{id_titre}', [App\Http\Controllers\TitresController::class, 'valideTitre']);
+Route::put('admins/albums/{id_album}', [App\Http\Controllers\AlbumsController::class, 'valideAlbum']);
+
+
+// Delete route
+
+
+Route::delete('albums/{id_album}', [App\Http\Controllers\MultipleController::class, 'deleteAlbum']);
+
+Route::delete('anecdotes/{id_anec}',[App\Http\Controllers\AnecdotesController::class, 'deleteAnec']);

@@ -62,4 +62,44 @@ l'ajout"],400);
 
 }
 
+public function valideAlbums(Request $request, $id_album)
+    {
+        if ($album = Albums::where("id_album", "=", $id_album)->first()) {
+            $album->valide = $request->valide;
+            $ok = $album->save();
+            return response()->json($album);
+            if ($ok) {
+                return response()->json(["status" => 1, "message" => "Album modifié"], 204);
+            } else {
+                return response()->json(["status" => 0, "message" => "Pb modif"], 400);
+            }
+        } else {
+            return response()->json(["status" => 0, "message" => "Prbl modif"], 400);
+        }
+    }
+
+    public function changeAlbum(Request $request, $id_album)
+    {
+
+
+        if ($albums = Albums::where("id_album", "=", $id_album)->first()) {
+
+            $albums->titre = $request->titre;
+            $albums->nom_categorie = $request->nom_categorie;
+            $albums->pochette = $request->pochette;
+
+
+            $ok = $albums->save();
+
+            return response()->json($albums);
+            if ($ok) {
+                return response()->json(["status" => 1, "message" => "Album modifié"], 204);
+            } else {
+                return response()->json(["status" => 0, "message" => "Pb modif"], 400);
+            }
+        } else {
+            return response()->json(["status" => 0, "message" => "Prbl modif"], 400);
+        }
+    }
+
 }

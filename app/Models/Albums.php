@@ -10,4 +10,8 @@ class Albums extends Model
     use HasFactory;
     public $timestamps = FALSE;
     public $incrementing = False;
+
+    protected $primaryKey = 'id_album';
+
+    protected $keyType = 'int';
 }
